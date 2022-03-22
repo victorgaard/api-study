@@ -20,22 +20,23 @@ async function loadUsers() {
 
 loadUsers();
 
+function setInnerHtmlById(id, value) {
+    document.getElementById(id).innerHTML = '';
+}
+
+function updateValues(data) {
+    Object.entries(data).forEach(([id, value]) => setInnerHtmlById(id, value));
+}
+
 function handleChange() {
     const selected = event.target.value;
+    const user = users.find(user => user.name === selected);
 
-    if (selected === 'notThisOne') {
-        document.getElementById('fullName').innerHTML = '';
-        document.getElementById('phoneNumber').innerHTML = '';
-        document.getElementById('address').innerHTML = '';
-        document.getElementById('city').innerHTML = '';
-        document.getElementById('state').innerHTML = '';    
-        return;
-    }
-
-    const check = users.find(user => user.name === selected)
-    document.getElementById('fullName').innerHTML = `Full name: ${check.name}`;
-    document.getElementById('phoneNumber').innerHTML = `Phone number: ${check.phone}`;
-    document.getElementById('address').innerHTML = `Street: ${check.address.street}`;
-    document.getElementById('city').innerHTML = `City: ${check.address.city}`;
-    document.getElementById('state').innerHTML = `State: ${check.address.state}`;    
+    updateValues({
+        fullName: user ? `Full name: ${user.name}` : '', 
+        phoneNumber: user ? `Phone number: ${user.phone}` : '', 
+        address: user ? `Street: ${user.address.street}` : '',
+        city: user ? `City: ${user.address.city}` : '',
+        state: user ? `State: ${user.address.state}` : '';
+    });   
 }
