@@ -21,7 +21,7 @@ async function loadUsers() {
 loadUsers();
 
 function setInnerHtmlById(id, value) {
-    document.getElementById(id).innerHTML = '';
+    document.getElementById(id).innerHTML = value;
 }
 
 function updateValues(data) {
@@ -37,6 +37,6 @@ function handleChange() {
         phoneNumber: user ? `Phone number: ${user.phone}` : '', 
         address: user ? `Street: ${user.address.street}` : '',
         city: user ? `City: ${user.address.city}` : '',
-        state: user ? `State: ${user.address.state}` : '';
+        state: user ? `State: ${user.address.state}` : '',
     });   
 }
