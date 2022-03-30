@@ -1,3 +1,4 @@
 [[redirects]]
   from = "/api-study"
   to = "https://api-study.victorsantos.work"
+  status = 200
